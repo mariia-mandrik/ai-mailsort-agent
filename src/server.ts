@@ -11,7 +11,9 @@ const RequestSchema = z.object({
   })
 });
 
-const fastify = Fastify({ logger: true });
+const fastify = Fastify({
+  logger: true 
+});
 const service = new MailService();
 
 // Analysis endpoint
@@ -25,6 +27,7 @@ fastify.post('/classify-email', async (request, reply) => {
 
 // Global error handler
 fastify.setErrorHandler((error, request, reply) => {
+    console.error('SERVER ERROR:', error);
   if (error.name === 'ZodError') {
     return reply.status(400).send({ 
       status: 'error', 
