@@ -1,10 +1,9 @@
 import OpenAI from 'openai';
 import fs from 'fs/promises';
 import { MailCategorieResponseSchema } from './schema.js'; // Make sure this file exists
+import { openai } from '../lib/openai.js';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+
 
 export class MailService {
   async sortMail( mail: mail) {

@@ -35,7 +35,7 @@ fastify.setErrorHandler((error, request, reply) => {
       details: error.issues 
     });
   }
-  
+  request.log.error({ err: error }, 'Error caught in global error handler');
   reply.status(500).send({ 
     status: 'error', 
     message: 'Something went wrong on the server'
